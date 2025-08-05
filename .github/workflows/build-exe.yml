@@ -27,9 +27,15 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
 
-      - name: ⚙️ Compilar .exe com ícone
+      - name: ⚙️ Compilar .exe com PyInstaller e ícone
         run: |
           pyinstaller --onefile --icon=icon.ico system_info_reader.py
+
+      - name: 📤 Upload do executável
+        uses: actions/upload-artifact@v4
+        with:
+          name: system_info_reader.exe
+          path: dist/system_info_reader.exe
 
       - name: 📤 Upload do executável
         uses: actions/upload-artifact@v4
