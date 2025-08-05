@@ -328,6 +328,11 @@ def main():
     except Exception as e:
         print(f"ERRO durante coleta: {e}")
         return
+
+    # Verifica se o script está em ambiente interativo
+    if not sys.stdin.isatty():
+        print("Modo não interativo detectado. Encerrando para evitar input() em CI.")
+        return
     
     # Opções do usuário
     while True:
