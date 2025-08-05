@@ -337,10 +337,11 @@ def main():
         print("3. Mostrar resumo")
         print("4. Sair")
         
-try:
-    choice = input("\nEscolha (1-4): ").strip()
-except EOFError:
-    choice = '4'  # Saída automática em ambiente não-interativo        
+        try:
+            choice = input("\nEscolha (1-4): ").strip()
+        except EOFError:
+            choice = '4'  # Saída automática em ambiente não-interativo        
+        
         if choice == '1':
             filename = input("Nome do arquivo (enter para 'system_info.json'): ").strip()
             if not filename:
