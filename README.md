@@ -19,12 +19,27 @@ pip install psutil requests
 
 ## 🔧 Como usar
 
-1. **Execute o script:**
+1. **Execute o script (modo interativo):**
 ```bash
 python system_info_reader.py
 ```
 
-2. **Escolha uma opção:**
+2. **Modo não-interativo (linha de comando):**
+```bash
+# Salvar informações em arquivo JSON
+python system_info_reader.py --save meu_sistema.json
+
+# Mostrar apenas resumo do sistema
+python system_info_reader.py --summary
+
+# Salvar silenciosamente (para automação)
+python system_info_reader.py --save sistema.json --quiet
+
+# Ver ajuda
+python system_info_reader.py --help
+```
+
+3. **No modo interativo, escolha uma opção:**
    - `1` - Salvar informações em arquivo JSON
    - `2` - Enviar para Claude (requer API key)
    - `3` - Mostrar resumo do sistema
@@ -61,6 +76,31 @@ python system_info_reader.py
 
 ### Rede
 - Interfaces de rede (sem IPs específicos)
+
+## 🧪 Testes Automatizados
+
+Este projeto inclui testes automatizados abrangentes:
+
+```bash
+# Executar todos os testes
+python -m pytest tests/ -v
+
+# Executar apenas testes específicos
+python -m pytest tests/test_system_info_reader.py::TestSystemInfoReader::test_get_system_info -v
+
+# Verificar linting
+flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+```
+
+### Cobertura dos Testes
+- ✅ Coleta de informações do sistema
+- ✅ Coleta de informações de hardware  
+- ✅ Detecção de programas instalados (Windows/Linux/macOS)
+- ✅ Informações de rede e processos
+- ✅ Salvamento em arquivo JSON
+- ✅ Integração com API do Claude
+- ✅ Funcionalidade CLI (linha de comando)
+- ✅ Verificação de dependências
 
 ## 🤖 Integração com Claude
 
